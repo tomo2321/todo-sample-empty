@@ -1,18 +1,10 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
 
 import Button from '@/components/common/parts/Button';
+import { useTextDisplay } from '@/hooks/section4/useTextDisplay';
 
 const Page: NextPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleClickDisplay = () => {
-    setIsVisible(true);
-  };
-
-  const handleClickConceal = () => {
-    setIsVisible(false);
-  };
+  const { isVisible, handleClickDisplay, handleClickConceal } = useTextDisplay();
 
   return (
     <div className="mx-auto mt-10 max-w-4xl">
