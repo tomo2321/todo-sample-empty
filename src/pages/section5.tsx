@@ -1,14 +1,11 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
+
+import { useInputText } from '@/hooks/section5/useInputText';
 
 const initialText = 'Hello';
 
 const Page: NextPage = () => {
-  const [text, setText] = useState(initialText);
-
-  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value || initialText);
-  };
+  const { text, handleChangeText } = useInputText(initialText);
 
   return (
     <div className="mx-auto mt-10 max-w-4xl">
