@@ -1,24 +1,17 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
 
 import Button from '@/components/common/parts/Button';
+import { useChangeColor } from '@/hooks/section6/useChangeColor';
 
 const BACKGROUND_COLORS = ['lightblue', 'lightgreen', 'lightcoral', 'lightgoldenrodyellow'];
 
 const Page: NextPage = () => {
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-  const onClickChageColor = () => {
-    setCurrentColorIndex((prevState) => (prevState + 1) % BACKGROUND_COLORS.length);
-  };
+  const { color, onClickChangeColor } = useChangeColor(BACKGROUND_COLORS);
 
   return (
-    <div
-      className="h-screen pt-8"
-      style={{ backgroundColor: BACKGROUND_COLORS[currentColorIndex] }}
-    >
+    <div className="h-screen pt-8" style={{ backgroundColor: color }}>
       <div className="flex justify-center">
-        <Button onClick={onClickChageColor} label="Click Me" variant="primary" />
+        <Button onClick={onClickChangeColor} label="Click Me" variant="primary" />
       </div>
     </div>
   );
