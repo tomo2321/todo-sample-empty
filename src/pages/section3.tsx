@@ -1,15 +1,10 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
 
 import Button from '@/components/common/parts/Button';
+import { useCountUp } from '@/hooks/section3/useCountUp';
 
 const Page: NextPage = () => {
-  const [count, setCount] = useState(0);
-
-  const onClickCountUp = () => {
-    setCount((prevState) => prevState + 1);
-  };
-
+  const { count, onClickCountUp } = useCountUp();
   return (
     <div className="mx-auto mt-10 max-w-4xl">
       <div className="flex justify-center">
