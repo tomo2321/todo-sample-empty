@@ -1,16 +1,9 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
+
+import useCelsiusToFahrenheit from '@/hooks/section8/useCelsiusToFahrenheit';
 
 const Page: NextPage = () => {
-  const [celsius, setCelsius] = useState(0);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCelsius(e.target.valueAsNumber);
-  };
-
-  const convertCelsiusToFahrenheit = (celsius: number): number => {
-    return (celsius * 9) / 5 + 32;
-  };
+  const { celsius, fahrenheit, handleChange } = useCelsiusToFahrenheit();
 
   return (
     <div className="mx-auto mt-8 max-w-4xl">
@@ -26,7 +19,7 @@ const Page: NextPage = () => {
               onChange={handleChange}
             />
           </div>
-          <p>Fahrenheit: {convertCelsiusToFahrenheit(celsius)}</p>
+          <p>Fahrenheit: {fahrenheit}</p>
         </div>
       </div>
     </div>
