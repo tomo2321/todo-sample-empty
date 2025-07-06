@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
 
 import Button from '@/components/common/parts/Button';
+import useQuiz from '@/hooks/section9/useQuiz';
 
 const QUESTION = 'What is React?';
 const CHOICE_LIST = [
@@ -13,20 +13,7 @@ const CHOICE_LIST = [
 const ANSWER = 'A JavaScript library for building user interfaces';
 
 const Page: NextPage = () => {
-  const [selectedChoice, setSelectedChoice] = useState('');
-  const [result, setResult] = useState('');
-
-  const handleChoice = (choice: string) => {
-    setSelectedChoice(choice);
-  };
-
-  const handleSubmit = () => {
-    if (selectedChoice === ANSWER) {
-      setResult('Correct!');
-    } else {
-      setResult('Incorrect...');
-    }
-  };
+  const { selectedChoice, result, handleChoice, handleSubmit } = useQuiz(ANSWER);
 
   return (
     <div className="mx-auto mt-8 max-w-4xl">
