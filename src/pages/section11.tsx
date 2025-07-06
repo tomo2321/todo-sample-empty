@@ -1,6 +1,6 @@
-'use client';
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+
+import { useRandomText } from '@/hooks/section11/useRandomText';
 
 const QUOTE_LIST = [
   'The only way to do great work is to love what you do. - Steve Jobs',
@@ -34,18 +34,13 @@ const QUOTE_LIST = [
 ];
 
 const Page: NextPage = () => {
-  const [quote, setQuote] = useState('');
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * QUOTE_LIST.length);
-    setQuote(QUOTE_LIST[randomIndex]);
-  }, []);
+  const { text } = useRandomText(QUOTE_LIST);
 
   return (
     <div className="mx-auto mt-8 max-w-4xl">
       <div className="flex justify-center">
         <div>
-          <h3 className="text-center text-2xl">{quote}</h3>
+          <h3 className="text-center text-2xl">{text}</h3>
         </div>
       </div>
     </div>
