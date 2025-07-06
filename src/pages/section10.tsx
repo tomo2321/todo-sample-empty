@@ -1,18 +1,9 @@
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+
+import { useDigitalClock } from '@/hooks/section10/useDigitalClock';
 
 const Page: NextPage = () => {
-  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
-
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
-
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
+  const { currentTime } = useDigitalClock();
 
   return (
     <div className="mx-auto mt-8 max-w-4xl">
